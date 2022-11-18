@@ -5,9 +5,6 @@ import java.util.List;
 
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
-import cotuba.epub.GeradorEPUB;
-import cotuba.md.RenderizadorMDParaHTML;
-import cotuba.pdf.GeradorPDF;
 
 /**
  * Esta classe é um caso de uso. A sua função é orquestar a execução das demais
@@ -23,8 +20,13 @@ import cotuba.pdf.GeradorPDF;
  */
 public class Cotuba {
 
-	public void executa(Path diretorioDosMD, String formato, Path arquivoDeSaida) {
-		var renderizador = new RenderizadorMDParaHTML();
+	public void executa(ParametrosCotuba parametros) {
+
+		Path diretorioDosMD = parametros.getDiretorioDosMD();
+		String formato = parametros.getFormato();
+		Path arquivoDeSaida = parametros.getArquivoDeSaida();
+
+		RenderizadorMDParaHTML renderizador = RenderizadorMDParaHTML.cria();
 		List<Capitulo> capitulos = renderizador.renderiza(diretorioDosMD);
 
 		Ebook ebook = new Ebook();
@@ -33,11 +35,11 @@ public class Cotuba {
 		ebook.setCapitulos(capitulos);
 
 		if ("pdf".equals(formato)) {
-			var geradorPDF = new GeradorPDF();
+			GeradorPDF geradorPDF = GeradorPDF.cria();
 			geradorPDF.gera(ebook);
 
 		} else if ("epub".equals(formato)) {
-			var geradorEPUB = new GeradorEPUB();
+			GeradorEPUB geradorEPUB = GeradorEPUB.cria();
 			geradorEPUB.gera(ebook);
 
 		} else {
