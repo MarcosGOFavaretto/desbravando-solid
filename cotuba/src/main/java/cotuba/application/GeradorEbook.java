@@ -1,9 +1,9 @@
 package cotuba.application;
 
 import cotuba.domain.Ebook;
-import cotuba.pdf.GeradorPDFComIText;
+import cotuba.epub.GeradorEPUB;
 
-public interface GeradorPDF {
+public interface GeradorEbook {
 
 	void gera(Ebook ebook);
 
@@ -11,7 +11,8 @@ public interface GeradorPDF {
 	 * Este método foi criado para simular uma Factory, para que outro arquivo não
 	 * precisasse ser criado.
 	 */
-	static GeradorPDF cria() {
-		return new GeradorPDFComIText();
+	static GeradorEbook cria() {
+		return new GeradorEPUB();
 	}
+
 }
