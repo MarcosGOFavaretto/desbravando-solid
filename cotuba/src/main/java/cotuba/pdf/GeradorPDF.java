@@ -11,6 +11,6 @@ public interface GeradorPDF {
 	 * precisasse ser criado.
 	 */
 	static GeradorPDF cria() {
-		return new GeradorPDFImpl();
+		return new GeradorPDFComIText();
 	}
 }

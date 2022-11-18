@@ -11,7 +11,7 @@ public interface GeradorEPUB {
 	 * precisasse ser criado.
 	 */
 	static GeradorEPUB cria() {
-		return new GeradorEPUBImpl();
+		return new GeradorEPUBComEpublib();
 	}
 
 }

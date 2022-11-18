@@ -14,6 +14,6 @@ public interface RenderizadorMDParaHTML {
 	 * precisasse ser criado.
 	 */
 	static RenderizadorMDParaHTML cria() {
-		return new RenderizadorMDParaHTMLImpl();
+		return new RenderizadorMDParaHTMLComCommonMark();
 	}
 }
