@@ -5,9 +5,6 @@ import java.util.List;
 
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
-import cotuba.epub.GeradorEPUB;
-import cotuba.md.RenderizadorMDParaHTML;
-import cotuba.pdf.GeradorPDF;
 
 /**
  * Esta classe é um caso de uso. A sua função é orquestar a execução das demais
@@ -23,7 +20,12 @@ import cotuba.pdf.GeradorPDF;
  */
 public class Cotuba {
 
-	public void executa(Path diretorioDosMD, String formato, Path arquivoDeSaida) {
+	public void executa(ParametrosCotuba parametros) {
+
+		Path diretorioDosMD = parametros.getDiretorioDosMD();
+		String formato = parametros.getFormato();
+		Path arquivoDeSaida = parametros.getArquivoDeSaida();
+
 		RenderizadorMDParaHTML renderizador = RenderizadorMDParaHTML.cria();
 		List<Capitulo> capitulos = renderizador.renderiza(diretorioDosMD);
 
