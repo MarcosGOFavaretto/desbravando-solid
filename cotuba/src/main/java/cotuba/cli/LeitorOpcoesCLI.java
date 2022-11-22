@@ -16,11 +16,12 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 import cotuba.application.ParametrosCotuba;
+import cotuba.domain.FormatoEbook;
 
 class LeitorOpcoesCLI implements ParametrosCotuba {
 
 	private Path diretorioDosMD;
-	private String formato;
+	private FormatoEbook formato;
 	private Path arquivoDeSaida;
 	private boolean modoVerboso;
 
@@ -87,9 +88,9 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
 		String nomeDoFormatoDoEbook = cmd.getOptionValue("format");
 
 		if (nomeDoFormatoDoEbook != null) {
-			formato = nomeDoFormatoDoEbook.toLowerCase();
+			formato = FormatoEbook.valueOf(nomeDoFormatoDoEbook.toUpperCase());
 		} else {
-			formato = "pdf";
+			formato = FormatoEbook.PDF;
 		}
 	}
 
@@ -98,7 +99,7 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
 		if (nomeDoArquivoDeSaidaDoEbook != null) {
 			arquivoDeSaida = Paths.get(nomeDoArquivoDeSaidaDoEbook);
 		} else {
-			arquivoDeSaida = Paths.get("book." + formato.toLowerCase());
+			arquivoDeSaida = Paths.get("book." + formato.name().toLowerCase());
 		}
 
 		try {
@@ -123,7 +124,7 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
 	}
 
 	@Override
-	public String getFormato() {
+	public FormatoEbook getFormato() {
 		return formato;
 	}
 

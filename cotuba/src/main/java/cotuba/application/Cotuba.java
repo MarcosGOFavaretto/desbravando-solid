@@ -5,9 +5,8 @@ import java.util.List;
 
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
-import cotuba.epub.GeradorEPUB;
+import cotuba.domain.FormatoEbook;
 import cotuba.md.RenderizadorMDParaHTML;
-import cotuba.pdf.GeradorPDF;
 
 /**
  * Esta classe é um caso de uso. A sua função é orquestar a execução das demais
@@ -26,7 +25,7 @@ public class Cotuba {
 	public void executa(ParametrosCotuba parametros) {
 
 		Path diretorioDosMD = parametros.getDiretorioDosMD();
-		String formato = parametros.getFormato();
+		FormatoEbook formato = parametros.getFormato();
 		Path arquivoDeSaida = parametros.getArquivoDeSaida();
 
 		RenderizadorMDParaHTML renderizador = new RenderizadorMDParaHTML();
@@ -37,18 +36,8 @@ public class Cotuba {
 		ebook.setArquivoDeSaida(arquivoDeSaida);
 		ebook.setCapitulos(capitulos);
 
-		GeradorEbook geradorEbook;
-		if ("pdf".equals(formato)) {
-			geradorEbook = new GeradorPDF();
-			geradorEbook.gera(ebook);
-
-		} else if ("epub".equals(formato)) {
-			geradorEbook = new GeradorEPUB();
-			geradorEbook.gera(ebook);
-
-		} else {
-			throw new IllegalArgumentException("Formato do ebook inválido: " + formato);
-		}
+		GeradorEbook geradorEbook = GeradorEbook.cria(formato);
+		geradorEbook.gera(ebook);
 	}
 
 }
