@@ -42,7 +42,7 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
 		options.addOption(opcaoDeDiretorioDosMD);
 
 		var opcaoDeFormatoDoEbook = new Option("f", "format", true,
-				"Formato de saída do ebook. Pode ser: pdf ou epub. Default: pdf");
+				"Formato de saída do ebook. Pode ser: pdf, epub ou html. Default: pdf");
 		options.addOption(opcaoDeFormatoDoEbook);
 
 		var opcaoDeArquivoDeSaida = new Option("o", "output", true,

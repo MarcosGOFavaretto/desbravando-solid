@@ -8,7 +8,6 @@ public interface GeradorEbook {
 	void gera(Ebook ebook);
 
 	static GeradorEbook cria(FormatoEbook formato) {
-
 		return formato.getGerador();
 	}
 
