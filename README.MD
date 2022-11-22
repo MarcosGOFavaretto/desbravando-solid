@@ -59,8 +59,12 @@ Pronto! O projeto já foi instalado e pode ser executado estando dentro do repos
 
 Para gerar o arquivo em PDF, basta utilizar o comando:
 
-`./cotuba.sh -d desbravando-solid/cotuba/livro-exemplo -f pdf`
+`./cotuba.sh -d ./cotuba/livro-exemplo -f pdf`
 
 Para gerar o arquivo em EPUB:
 
-`./cotuba.sh -d desbravando-solid/cotuba/livro-exemplo -f epub`
+`./cotuba.sh -d ./cotuba/livro-exemplo -f epub`
+
+Para gerar o arquivo em HTML:
+
+`./cotuba.sh -d ./cotuba/livro-exemplo -f html`
