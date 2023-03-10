@@ -15,22 +15,30 @@ import cotuba.domain.Ebook;
 public interface Plugin {
 
 	/**
-	 * Este atributo da interface foi criado para evitar que o ServiceLoader faça
-	 * mais do que uma busca no Classpath em busca de implementações desta SPI. Este
-	 * foi um dos desafios sugeridos pelo autor do livro.
+	 * Este atributo da interface foi criado para evitar que o {@link ServiceLoader}
+	 * faça mais do que uma busca no classpath em busca de implementações desta SPI.
+	 * Este foi um dos desafios sugeridos pelo autor do livro.
+	 * 
 	 */
 	static ServiceLoader<Plugin> plugins = ServiceLoader.load(Plugin.class);
 
 	/**
+	 * Este método deve ser implementado pelos plugins. Será executado sempre após a
+	 * renderização de cada um dos capítulos do ebook.
 	 * 
-	 * @param html
-	 * @return
+	 * @param html: Neste parâmetro, deve ser fornecido o HTML renderizado para o
+	 *              {@link Capitulo}.
+	 * @return Espera-se que o retorno seja o mesmo HTML com os estilos (CSS)
+	 *         aplicados. O retorno deste método é aplicado no Ebook final como
+	 *         sendo o seu conteúdo.
 	 */
 	String aposRenderizacao(String html);
 
 	/**
+	 * Este método deve ser implementado pelos plugins. Será executado sempre após a
+	 * geração do {@link Ebook}.
 	 * 
-	 * @param ebook
+	 * @param ebook: Neste parâmetro, deve ser fornecido o {@link Ebook} gerado.
 	 */
 	void aposGeracao(Ebook ebook);
 
