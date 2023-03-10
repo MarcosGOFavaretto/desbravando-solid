@@ -1,0 +1,17 @@
+/* O tema criado neste arquivo de estilo será aplicado ao Ebook */
+
+h1 { /* Título do capítulo */
+	border-bottom: 1px dashed black;
+	font-size: 3em;
+}
+
+h2 { /* Título das seções */
+	border-left: 1px solid black;
+	padding-left: 5px;
+	border-bottom: 1px solid black;
+}
+
+blockquote { /* citações */
+	border: 1px solid black;
+	padding: 5px;
+}
