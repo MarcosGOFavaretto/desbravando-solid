@@ -3,3 +3,7 @@
 /libs
 ./cotuba.sh
 *.html
+/.metadata/
+*.jar
+.classpath
+.project
