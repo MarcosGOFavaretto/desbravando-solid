@@ -7,6 +7,7 @@ import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
 import cotuba.domain.FormatoEbook;
 import cotuba.md.RenderizadorMDParaHTML;
+import cotuba.plugin.Plugin;
 
 /**
  * Esta classe é um caso de uso. A sua função é orquestar a execução das demais
@@ -38,6 +39,7 @@ public class Cotuba {
 
 		GeradorEbook geradorEbook = GeradorEbook.cria(formato);
 		geradorEbook.gera(ebook);
+		Plugin.gerou(ebook);
 	}
 
 }
